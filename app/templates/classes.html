@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}TaskMaster | Classes{% endblock %}
+
+{% block content %}
+<div class="classes">
+    <div class="container mx-auto px-4">
+        <h1 class="text-xl font-semibold uppercase text-indigo-900 py-5">{{ group_id }}</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+            {% for key, value in load.items() %}
+            <div class="mx-auto mb-7">
+                <div class="flex justify-center">
+                    <h3 class="text-xl font-semibold capitalize text-indigo-700">{{ key }}</h3>
+                </div>
+                <table class="table-auto">
+                    <thead>
+                        <tr>
+                            <th class="px-4 py-2 text-gray-700">Time</th>
+                            <th class="px-4 py-2 text-gray-700">Classes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i,j in value|zip(rings)%}
+                        <tr>
+                            <td class="border px-4 py-2 whitespace-no-wrap bg-gray-100 text-gray-700">{{ j }}</td>
+                            <td class="border px-4 py-2 whitespace-no-wrap text-gray-700">{{ i }}</td>
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                    </tbody>
+                </table>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

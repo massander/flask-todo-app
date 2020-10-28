@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}TaskMaster | Tasks{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4">
+    <div class="flex mx-auto items-center justify-center py-3">
+        <h1 class="text-3xl font-extrabold text-indigo-700">MasterTask</h1>
+        <a href="/tasks/create"
+            class="ml-5 mt-2 px-3 py-2 rounded-md text-sm font-medium text-gray-300 bg-gray-900 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Create
+            new task</a>
+    </div>
+    {% if tasks|length < 1 %}
+    <h4 class="text-xl font-semibold text-indigo-900">
+        There are no tasks. Chill out!
+    </h4>
+    {% else %}
+    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 py-6">
+        {% for task in tasks %}
+        <div class="mx-auto max-w-sm rounded overflow-hidden shadow-lg">
+            <img class="w-full" src="{{ url_for('static', filename='img/placeholder.jpg') }}" alt="Cool image">
+            <div class="px-6 py-4">
+                <div class="flex justify-between">
+                    <h2 class="font-bold text-xl mb-2">{{ task.subject }}</h2>
+                    <span class="italic text-sm font-medium text-gray-300 px-2">{{ task.date_created.date() }}</span>
+                </div>
+                <p class="text-gray-700 text-base">{{ task.content }}</p>
+                <p class="text-gray-900 text-base py-3">
+                    Deadline:
+                    <span class="text-gray-900 px-2">{{ task.deadline }}</span>
+                </p>
+            </div>
+            <div class="px-6">
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{ task.subject }}</span>
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{ task.subject }}</span>
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{ task.subject }}</span>
+            </div>
+            <div class=" flex px-6 p-4 justify-end">
+                <a href="/tasks/delete/{{task.id}}"
+                    class="px-5 py-2 rounded-md text-sm font-medium text-gray-300 bg-gray-900 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Delete</a>
+                <a href="/tasks/update/{{task.id}}"
+                    class="ml-5 px-5 py-2 rounded-md text-sm font-medium text-gray-300 bg-gray-900 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Update</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

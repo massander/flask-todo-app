@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Tab icon -->
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/favicon-32x32.png') }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='img/favicon-16x16.png') }}">
+
+	<!-- Tailwind -->
+	<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+	<!-- Tailwind UI plugin -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css">
+
+	<!-- Custom css -->
+	<!-- It will override tailwind css -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+	<title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+	<nav class="bg-gray-800">
+		<div class="container mx-auto px-4">
+			<div class="flex items-center justify-between h-16">
+				<div class="flex items-center">
+					<div class="flex-shrink-0">
+						<img class="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-on-dark.svg"
+							alt="logo">
+					</div>
+					<div class="ml-4 flex items-baseline space-x-4">
+						<a href="/"
+							class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 bg-gray-900 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
+							TaskMaster
+						</a>
+						<a href="#"
+							class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
+							News
+						</a>
+						<div class="dropdown inline-block relative">
+							<button
+								class="inline-flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
+								<span>Classes</span>
+								<svg class="fill-current h-4 w-4 mt-1 ml-1" xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 20 20">
+									<path
+										d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+								</svg>
+							</button>
+							<div class=" dropdown-menu hidden absolute w-40">
+								<a href="/classes/group_21_1"
+									class="bg-gray-800 hover:bg-gray-700 px-3 py-2 text-gray-300 hover:text-white text-sm font-medium block whitespace-no-wrap mt-3">
+									Subgroup 1</a>
+								<a href="/classes/group_21_2"
+									class="bg-gray-800 hover:bg-gray-700 rounded-b-md px-3 py-2 text-gray-300 hover:text-white text-sm font-medium block whitespace-no-wrap">
+									Subgroup 2</a>
+							</div>
+						</div>
+						<a href="/tasks"
+							class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
+							Tasks
+						</a>
+					</div>
+				</div>
+				<div>
+					<a href="#"
+						class="px-3 py-2 text-sm text-gray-300 rounded-md hover:text-white hover:bg-gray-700 focus:text-white focus:bg-gray-700">
+						Sign in</a>
+					<a href="#"
+						class="px-3 py-2 text-sm text-gray-300 rounded-md hover:text-white hover:bg-gray-700 focus:text-white focus:bg-gray-700">
+						Login</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+	{% block content %}{% endblock %}
+</body>
+
+</html>
